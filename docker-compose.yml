@@ -4,13 +4,28 @@ services:
   db:
     image: postgres:9.6.1
     volumes:
-    - ./db/postgres:/var/lib/postgresql/data
+    - postgres_data:/var/lib/postgresql/data
+
   puma:
     build:
       context: .
-    command: bundle exec puma --config config/puma.rb --environment development
+    command: bundle exec puma --config config/puma.rb
+    environment:
+    - RAILS_ENV=development
+    - PORT=3000
     volumes:
     - .:/app
-    - bundle:/bundle
+    - bundle_install:/app/vendor/bundle
+    - bundle:/app/.bundle
+    ports:
+    - 3000:3000
+    depends_on:
+    - db
+
 volumes:
+  postgres_data:
+    driver: local
+  bundle_install:
+    driver: local
   bundle:
+    driver: local
