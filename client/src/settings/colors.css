@@ -1,0 +1,10 @@
+:root {
+  --black:          #000;
+  --gray_darker:    #333;
+  --gray_dark:      #555;
+  --gray:           #999;
+  --gray_light:     #ccc;
+  --gray_lighter:   #f0f0f0;
+  --gray_lightest:  #f9f9f9;
+  --white:          #fff;
+}
