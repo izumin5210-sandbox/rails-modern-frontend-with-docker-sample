@@ -22,10 +22,21 @@ services:
     depends_on:
     - db
 
+  yarn:
+    build:
+      context: ./client
+    command: yarn run watch
+    volumes:
+    - ./client:/app
+    - ./public/assets:/app/dist
+    - node_modules:/app/node_modules
+
 volumes:
   postgres_data:
     driver: local
   bundle_install:
     driver: local
   bundle:
+    driver: local
+  node_modules:
     driver: local
