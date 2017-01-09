@@ -1,0 +1,16 @@
+version: '2'
+
+services:
+  db:
+    image: postgres:9.6.1
+    volumes:
+    - ./db/postgres:/var/lib/postgresql/data
+  puma:
+    build:
+      context: .
+    command: bundle exec puma --config config/puma.rb --environment development
+    volumes:
+    - .:/app
+    - bundle:/bundle
+volumes:
+  bundle:
