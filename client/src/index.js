@@ -1,9 +1,9 @@
-import React      from "react"
-import { render } from "react-dom"
+/* @flow */
+import { render } from 'react-dom'
 
-import "./index.css"
+import './index.css'
 
-const rootEl = document.getElementById("container")
+const rootEl = document.getElementById('container')
 
 render(
   <div>

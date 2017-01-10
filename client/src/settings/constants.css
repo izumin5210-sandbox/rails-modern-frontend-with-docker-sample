@@ -1,7 +1,8 @@
+/* stylelint-disable declaration-colon-space-after */
 :root {
   /* colors */
-  --color-text:       var(--gray_darker);
-  --color-bg:         var(--gray_lightest);
+  --color-text: var(--gray_darker);
+  --color-bg:   var(--gray_lightest);
 
   /* text */
   --font-size-base:   14px;
@@ -10,3 +11,4 @@
   /* spacing */
   --spacing: 8px;
 }
+/* stylelint-enable */

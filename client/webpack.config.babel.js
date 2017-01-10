@@ -20,6 +20,15 @@ const config = {
   module: {
     rules: [
       {
+        enforce: "pre",
+        test: /\.jsx?$/,
+        use: [
+          { loader: "flowtype-loader" },
+          { loader: "eslint-loader" },
+        ],
+        exclude: /node_modules/,
+      },
+      {
         test: /\.jsx?$/,
         use: [
           { loader: 'babel-loader' },
@@ -52,8 +61,12 @@ const config = {
         postcss: bundle => [
           require("postcss-smart-import")({
             addDependencyTo: bundle,
+            plugins: [
+              require("stylelint"),
+            ],
           }),
           require('postcss-custom-properties'),
+          require("postcss-reporter"),
         ],
         context: __dirname,
       },
