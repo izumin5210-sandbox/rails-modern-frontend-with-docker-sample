@@ -2,5 +2,25 @@
   "presets": [
     "es2015",
     "react"
-  ]
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        [
+          "espower",
+          {
+            "embedAst": true
+          }
+        ]
+      ],
+      "presets": [
+        "power-assert"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "unassert"
+      ]
+    }
+  }
 }

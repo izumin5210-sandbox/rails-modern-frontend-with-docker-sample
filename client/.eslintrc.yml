@@ -1,0 +1,22 @@
+env:
+  browser: true
+  node: true
+  commonjs: true
+  es6: true
+  mocha: true
+extends:
+- standard
+- plugin:flowtype/recommended
+parser: babel-eslint
+parserOptions:
+  ecmaFeatures:
+    experimentalObjectRestSpread: true
+    jsx: true
+  sourceType: module
+plugins:
+- react
+- flowtype
+rules:
+  comma-dangle:
+  - error
+  - always-multiline
