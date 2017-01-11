@@ -1,6 +1,7 @@
 import webpack            from 'webpack'
 import ExtractTextPlugin  from 'extract-text-webpack-plugin'
 import ManifestPlugin     from 'webpack-manifest-plugin'
+import FlowtypePlugin     from  'flowtype-loader/plugin'
 import path               from 'path'
 
 const env = process.env.NODE_ENV || 'development'
@@ -55,6 +56,8 @@ const config = {
   },
 
   plugins: [
+    new FlowtypePlugin(),
+
     new webpack.LoaderOptionsPlugin({
       test: /\.css$/,
       options: {
