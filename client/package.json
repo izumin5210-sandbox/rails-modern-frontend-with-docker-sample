@@ -3,9 +3,9 @@
   "description": "Ruby on Rails project skeleton with docker containers and modern-frontend stacks",
   "version": "1.0.0",
   "dependencies": {
+    "normalize.css": "^5.0.0",
     "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "sanitize.css": "^4.1.0"
+    "react-dom": "^15.4.2"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
