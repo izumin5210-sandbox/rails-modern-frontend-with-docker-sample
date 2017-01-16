@@ -40,7 +40,8 @@ RUN apt-get update \
     libelf-dev \
   && rm -rf /var/lib/apt/lists/* \
   && curl -o- -L https://yarnpkg.com/install.sh \
-  | bash -s -- --version $YARNPKG_VERSION
+  | bash -s -- --version $YARNPKG_VERSION \
+  && npm install -g flow-typed
 
 COPY \
   package.json \
@@ -50,3 +51,5 @@ COPY \
 RUN yarn install
 
 COPY . $APP
+
+RUN flow-typed install

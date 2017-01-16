@@ -30,6 +30,7 @@ services:
     - ./client:/app
     - ./public/assets:/app/dist
     - node_modules:/app/node_modules
+    - flow-typed:/app/flow-typed
 
 volumes:
   postgres_data:
@@ -39,4 +40,6 @@ volumes:
   bundle:
     driver: local
   node_modules:
+    driver: local
+  flow-typed:
     driver: local
