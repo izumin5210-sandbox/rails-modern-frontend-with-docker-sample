@@ -6,6 +6,10 @@ env:
   mocha: true
 extends:
 - standard
+- plugin:import/errors
+- plugin:import/warnings
+- plugin:react/all
+- plugin:jsx-a11y/recommended
 - plugin:flowtype/recommended
 parser: babel-eslint
 parserOptions:
@@ -14,9 +18,33 @@ parserOptions:
     jsx: true
   sourceType: module
 plugins:
+- promise
 - react
+- jsx-a11y
 - flowtype
 rules:
   comma-dangle:
   - error
   - always-multiline
+  no-duplicate-imports:
+  - off
+  react/prop-types:
+  - off
+  react/jsx-filename-extension:
+  - off
+  react/jsx-indent:
+  - error
+  - 2
+  react/jsx-indent-props:
+  - error
+  - 2
+  react/jsx-sort-props:
+  - error
+  - callbacksLast: true
+    shorthandLast: true
+  react/require-default-props:
+  - off
+  promise/prefer-await-to-then:
+  - error
+  promise/prefer-await-to-callbacks:
+  - error
