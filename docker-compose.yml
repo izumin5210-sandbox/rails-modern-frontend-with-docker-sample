@@ -14,7 +14,20 @@ services:
     - RAILS_ENV=development
     - PORT=3000
     volumes:
-    - .:/app
+    - ./app:/app/app
+    - ./bin:/app/bin
+    - ./config:/app/config
+    - ./db:/app/db
+    - ./lib:/app/lib
+    - ./public:/app/public
+    - ./spec:/app/spec
+    - ./vendor:/app/vendor
+    - ./Gemfile:/app/Gemfile
+    - ./Gemfile.lock:/app/Gemfile.lock
+    - ./Rakefile:/app/Rakefile
+    - ./config.ru:/app/config.ru
+    - ./.rspec:/app/.rspec
+    - ./.rubocop.yml:/app/.rubocop.yml
     - bundle_install:/app/vendor/bundle
     - bundle:/app/.bundle
     ports:
