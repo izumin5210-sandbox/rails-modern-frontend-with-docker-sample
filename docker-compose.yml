@@ -6,7 +6,7 @@ services:
     volumes:
     - postgres_data:/var/lib/postgresql/data
 
-  puma:
+  rails:
     build:
       context: .
     command: ["bin/rails", "server", "--binding", "0.0.0.0"]
@@ -37,7 +37,7 @@ services:
     tty: true
     stdin_open: true
 
-  yarn:
+  webpack:
     build:
       context: ./client
     command: yarn run watch
