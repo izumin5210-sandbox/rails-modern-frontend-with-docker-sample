@@ -9,7 +9,7 @@ services:
   puma:
     build:
       context: .
-    command: bundle exec puma --config config/puma.rb
+    command: ["bin/rails", "server", "--binding", "0.0.0.0"]
     environment:
     - RAILS_ENV=development
     - PORT=3000
