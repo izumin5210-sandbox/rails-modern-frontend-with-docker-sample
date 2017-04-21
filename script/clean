@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -eux
+
+docker-compose stop
+docker-compose rm --force
+docker container prune --force

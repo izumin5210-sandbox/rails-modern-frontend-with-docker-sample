@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -eu
+
+DOCKER_COMPOSE_SERVICE_NAME=webpack $(dirname $0)/exec yarn $@

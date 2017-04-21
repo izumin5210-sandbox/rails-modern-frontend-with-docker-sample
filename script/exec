@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+service_name=${DOCKER_COMPOSE_SERVICE_NAME:-rails}
+
+set -eu
+
+container_id=$(docker-compose ps -q $service_name)
+running_container_id=$(docker ps --quiet --filter id=$container_id)
+
+subcommand="run --rm"
+
+if [ -n "$running_container_id" ]; then
+  subcommand="exec"
+fi
+
+set -x
+docker-compose $subcommand $service_name $@

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+set -eu
+
+dirname=$(dirname $0)
+
+if [ ! -e $dirname/../.env ]; then
+  cp -v $dirname/../.env{.sample,}
+fi
+
+set -x
+
+$dirname/clean
+docker-compose build
+
+$dirname/rails db:create
+$dirname/rails db:migrate
+$dirname/rails db:seed_fu
+$dirname/server
