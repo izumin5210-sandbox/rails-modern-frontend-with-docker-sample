@@ -4,7 +4,7 @@ FROM node:6.10.2-slim
 ENV APP /app
 WORKDIR $APP
 ENV PATH /root/.yarn/bin:$PATH
-ENV YARNPKG_VERSION 0.18.1
+ENV YARNPKG_VERSION 0.23.2
 ENV ENTRYKIT_VERSION 0.4.0
 
 # FIXME: Fail `flow` on node:6.9.4-alpine
