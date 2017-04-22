@@ -1,5 +1,5 @@
 # FROM node:6.9.4-alpine
-FROM node:6.9.4
+FROM node:6.10.2-slim
 
 ENV APP /app
 WORKDIR $APP
