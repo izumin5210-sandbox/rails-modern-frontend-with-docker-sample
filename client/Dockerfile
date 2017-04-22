@@ -5,6 +5,7 @@ ENV APP /app
 WORKDIR $APP
 ENV PATH /root/.yarn/bin:$PATH
 ENV YARNPKG_VERSION 0.18.1
+ENV ENTRYKIT_VERSION 0.4.0
 
 # FIXME: Fail `flow` on node:6.9.4-alpine
 # events.js:160
@@ -40,16 +41,18 @@ RUN apt-get update \
     libelf-dev \
   && rm -rf /var/lib/apt/lists/* \
   && curl -o- -L https://yarnpkg.com/install.sh \
-  | bash -s -- --version $YARNPKG_VERSION \
-  && npm install -g flow-typed
+    | bash -s -- --version $YARNPKG_VERSION \
+  # entrykit
+  && wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+  && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+  && rm entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+  && mv entrykit /bin/entrykit \
+  && chmod +x /bin/entrykit \
+  && entrykit --symlink
 
-COPY \
-  package.json \
-  yarn.lock \
-  $APP/
-
-RUN yarn install
-
-COPY . $APP
-
-RUN flow-typed install
+ENTRYPOINT [ \
+  "prehook", "node -v", \
+  "prehook", "yarn -v", \
+  "prehook", "yarn --no-progress", \
+  "--" \
+]

@@ -6,23 +6,38 @@ services:
     volumes:
     - postgres_data:/var/lib/postgresql/data
 
-  puma:
+  rails:
     build:
       context: .
-    command: bundle exec puma --config config/puma.rb
+    command: ["bin/rails", "server", "--binding", "0.0.0.0"]
     environment:
     - RAILS_ENV=development
     - PORT=3000
     volumes:
-    - .:/app
+    - ./app:/app/app
+    - ./bin:/app/bin
+    - ./config:/app/config
+    - ./db:/app/db
+    - ./lib:/app/lib
+    - ./public:/app/public
+    - ./spec:/app/spec
+    - ./vendor:/app/vendor
+    - ./Gemfile:/app/Gemfile
+    - ./Gemfile.lock:/app/Gemfile.lock
+    - ./Rakefile:/app/Rakefile
+    - ./config.ru:/app/config.ru
+    - ./.rspec:/app/.rspec
+    - ./.rubocop.yml:/app/.rubocop.yml
     - bundle_install:/app/vendor/bundle
     - bundle:/app/.bundle
     ports:
     - 3000:3000
     depends_on:
     - db
+    tty: true
+    stdin_open: true
 
-  yarn:
+  webpack:
     build:
       context: ./client
     command: yarn run watch
