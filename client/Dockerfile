@@ -39,6 +39,7 @@ ENV ENTRYKIT_VERSION 0.4.0
 RUN apt-get update \
   && apt-get install -y \
     libelf-dev \
+    git \
   && rm -rf /var/lib/apt/lists/* \
   && curl -o- -L https://yarnpkg.com/install.sh \
     | bash -s -- --version $YARNPKG_VERSION \
