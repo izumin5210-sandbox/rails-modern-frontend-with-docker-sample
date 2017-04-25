@@ -13,12 +13,12 @@
 
 
 ### Client
-[Dockerfile](client/Dockerfile) (`node:6.9.4`)
+[Dockerfile](client/Dockerfile) (`node:6.10.2-slim`)
 
 - bulid
-    - Yarn 0.18.1
+    - Yarn 0.23.2
     - Babel 6.21.x
-    - Webpack 2.2.x
+    - Webpack 2.4.x
 - JS
     - React 15.4.x
     - Mocha + power-assert ( + testdouble.js )
@@ -31,26 +31,30 @@
 
 
 ## Usage
+There are `docker-compose` command wrappers under `./script`.
+
 Command examples:
 
 ```
-# Run rails server(puma) and watch client scripts/styles
-$ docker-compose up [--build]
+# `bundle install`, `yarn` and `flow-typed install` are run automatically just after containers started
 
-# Run `bundle install`
-$ docker-compose run --rm puma bundle install
+# Run rails server(puma) and watch client scripts/styles
+$ ./script/server
+
+# Run `bundle install` manually
+$ ./script/exec bundle
 
 # Add node packages
-$ docker-compose run --rm yarn yarn add <package>
+$ ./script/yarn add <package>
 
 # Migrate db
-$ docker-compose run --rm puma rails db:migrate
+$ ./script/rails db:migrate
 
 # Run server-side tests
-$ docker-compose run --rm puma rspec
+$ ./script/rspec
 
 # Run client-side tests
-$ docker-compose run --rm yarn yarn test
+$ ./script/yarn test
 ```
 
 

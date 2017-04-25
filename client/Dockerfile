@@ -1,10 +1,10 @@
 # FROM node:6.9.4-alpine
-FROM node:6.9.4
+FROM node:6.10.2-slim
 
 ENV APP /app
 WORKDIR $APP
 ENV PATH /root/.yarn/bin:$PATH
-ENV YARNPKG_VERSION 0.18.1
+ENV YARNPKG_VERSION 0.23.2
 ENV ENTRYKIT_VERSION 0.4.0
 
 # FIXME: Fail `flow` on node:6.9.4-alpine
@@ -39,6 +39,7 @@ ENV ENTRYKIT_VERSION 0.4.0
 RUN apt-get update \
   && apt-get install -y \
     libelf-dev \
+    git \
   && rm -rf /var/lib/apt/lists/* \
   && curl -o- -L https://yarnpkg.com/install.sh \
     | bash -s -- --version $YARNPKG_VERSION \
