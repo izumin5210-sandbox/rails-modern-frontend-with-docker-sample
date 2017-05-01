@@ -43,6 +43,9 @@ GEM
       ice_nine (~> 0.11.0)
       memoizable (~> 0.4.0)
     arel (7.1.4)
+    asset_paths_from_manifest (0.0.5)
+      activesupport (>= 4.2)
+      railties (>= 4.2)
     ast (2.3.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -208,6 +211,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  asset_paths_from_manifest
   byebug
   database_rewinder
   factory_girl_rails
@@ -228,4 +232,4 @@ DEPENDENCIES
   web-console (>= 3.3.0)
 
 BUNDLED WITH
-   1.13.7
+   1.14.6

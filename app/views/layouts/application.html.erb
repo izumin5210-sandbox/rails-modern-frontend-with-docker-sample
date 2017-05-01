@@ -4,11 +4,11 @@
     <title>App</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag webpack_asset_url('index'), media: 'all' %>
+    <%=  stylesheet_link_tag_from_manifest 'index' %>
   </head>
 
   <body>
     <%= yield %>
-    <%= javascript_include_tag webpack_asset_url('index') %>
+    <%= javascript_include_tag_from_manifest 'index' %>
   </body>
 </html>
