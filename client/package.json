@@ -44,6 +44,7 @@
     "stylelint-selector-bem-pattern": "^1.0.0",
     "testdouble": "^1.10.2",
     "webpack": "^2.4.1",
+    "webpack-dev-server": "^2.4.5",
     "webpack-manifest-plugin": "^1.1.0"
   },
   "license": "MIT",
@@ -57,6 +58,7 @@
     "lint:js:test": "eslint --global assert --global React test",
     "postinstall": "flow-typed install > /dev/null",
     "pretest": "npm run typecheck && npm run lint",
+    "start": "webpack-dev-server",
     "test": "npm run test:js",
     "test:js": "mocha",
     "typecheck": "flow",
