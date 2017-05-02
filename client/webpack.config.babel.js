@@ -57,23 +57,6 @@ const config = {
   plugins: [
     new FlowtypePlugin(),
 
-    new webpack.LoaderOptionsPlugin({
-      test: /\.css$/,
-      options: {
-        postcss: bundle => [
-          require("postcss-smart-import")({
-            addDependencyTo: bundle,
-            plugins: [
-              require("stylelint"),
-            ],
-          }),
-          require('postcss-custom-properties'),
-          require("postcss-reporter"),
-        ],
-        context: __dirname,
-      },
-    }),
-
     styleExtractor,
 
     new ManifestPlugin(),
